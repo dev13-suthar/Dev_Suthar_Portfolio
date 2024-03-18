@@ -1,7 +1,10 @@
-import {Box,Typography,Button,useMediaQuery} from "@mui/material";
+import {Box,Typography,useMediaQuery} from "@mui/material";
 import pic from "../assets/uidraw.svg"
 const BlurHeader = () => {
   const isSmallMobileScreen = useMediaQuery("(min-width:570px)");
+  const navigateToUrl = ()=>{
+    window.open('https://twitter.com/@DevSuthar1262','_blank');
+  }
   return (
     <Box p={"0.6rem 0.95rem"} display={"flex"} justifyContent={"space-between"}  height={"140px"} sx={{
         position: "relative",
@@ -26,7 +29,7 @@ const BlurHeader = () => {
           <Typography color={"primary"}>@Dev_Codes</Typography>
         </Box>
       </Box>
-      <Box zIndex={9999} display={"flex"} alignItems={"center"} sx={{cursor:"pointer"}}>
+      <Box zIndex={9999} display={"flex"} alignItems={"center"} sx={{cursor:"pointer"}} onClick={()=>navigateToUrl()}>
         <span style={{backgroundColor:"rgb(28,27,35)",padding:"0.8rem",borderRadius:"14px",color:"rgb(111,110,117)"}}>Let&apos;s Connect</span>
       </Box>
     </Box>

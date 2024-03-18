@@ -1,4 +1,4 @@
-import {Box,Typography,Divider} from "@mui/material"
+import {Box,Typography,Divider,useMediaQuery} from "@mui/material"
 import HomeIcon from '@mui/icons-material/Home';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -7,18 +7,21 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 // eslint-disable-next-line react/prop-types
 const Navbar = ({isNonMobileScreen,onScroll}) => {
+  const isSuperSmallScreen = useMediaQuery("(min-width:410px)");
   const handleClick = (to)=>{
       window.open(to,'_blank');
   }
 
   return (
-    <Box flexBasis={"21%"} p={"0.85rem"} maxHeight={"500px"} position={isNonMobileScreen?"sticky":"static"} top={"12px"} display={isNonMobileScreen?"block":"flex"} alignItems={"center"} justifyContent={"space-between"} mb={!isNonMobileScreen?"1rem":"0"} backgroundColor={"rgb(28,27,35)"} borderRadius={isNonMobileScreen?"8px":"0"}>
+    <Box flexBasis={"21%"} p={!isSuperSmallScreen?"0.11rem":"0.85rem"} maxHeight={"500px"} position={isNonMobileScreen?"sticky":"static"} top={"12px"} display={isNonMobileScreen?"block":"flex"} alignItems={"center"} justifyContent={"space-between"} mb={!isNonMobileScreen?"1rem":"0"} backgroundColor={"rgb(28,27,35)"} borderRadius={isNonMobileScreen?"8px":"0"}>
        {/* First Box for General Info */}
        <Box p={"0.15rem"} display={"flex"} flexDirection={isNonMobileScreen?"column":"row"} gap={isNonMobileScreen?"0.7rem":"1rem"}>
-          <Box  display={"flex"} p={isNonMobileScreen?"0.4rem":"0"} ml={isNonMobileScreen?"2rem":"0"} alignItems={"center"} gap={"0.44rem"} sx={{cursor:"pointer"}}>
-              <HomeIcon/>
-              <Typography variant={isNonMobileScreen?'h6':'h7'}>Home</Typography>
-          </Box>
+          {isSuperSmallScreen && (
+            <Box  display={"flex"} p={isNonMobileScreen?"0.4rem":"0"} ml={isNonMobileScreen?"2rem":"0"} alignItems={"center"} gap={"0.44rem"} sx={{cursor:"pointer"}}>
+            <HomeIcon/>
+            <Typography variant={isNonMobileScreen?'h6':'h7'}>Home</Typography>
+        </Box>
+          )}
           <Box onClick={()=>onScroll()} display={"flex"} p={isNonMobileScreen?"0.4rem":"0"} ml={isNonMobileScreen?"2rem":"0"} alignItems={"center"} gap={"0.44rem"}  sx={{cursor:"pointer"}}>
               <WidgetsIcon/>
               <Typography variant={isNonMobileScreen?'h6':'h7'}>Projects</Typography>
